@@ -5,19 +5,19 @@ create or replace stage frosty_friday.challenges.frosty_friday_challenge_3_stage
 
 ls '@frosty_friday_challenge_3_stage';
 
-create or replace table challenge_3_keywords as (
+create or replace table frosty_friday.challenges.challenge_3_keywords as (
 select $1 as keyword, $2 as added_by, $3 as nonsense from '@frosty_friday_challenge_3_stage/keywords.csv' where keyword != 'keyword'
 );
 
-select * from challenge_3_keywords;
+select * from frosty_friday.challenges.challenge_3_keywords;
 
 create or replace file format csv
     type = CSV
     skip_header = 1;
 
-create or replace table challenge_3 as (
+create or replace table frosty_friday.challenges.challenge_3 as (
 with keywords as (
-    select keyword from challenge_3_keywords
+    select keyword from frosty_friday.challenges.challenge_3_keywords
 ),
 
 files as (
@@ -40,4 +40,4 @@ count_rows as (
 
 select * from count_rows);
 
-select * from challenge_3;
+select * from frosty_friday.challenges.challenge_3;
