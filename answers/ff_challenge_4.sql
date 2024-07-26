@@ -1,3 +1,5 @@
+-- https://frostyfriday.org/blog/2022/07/15/week-4-hard/
+
 create or replace file format json
     type = 'JSON'
     strip_outer_array = True;
